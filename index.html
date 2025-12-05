@@ -20,7 +20,7 @@
       overflow: hidden;
     }
 
-    /* STARS BACKGROUND */
+    /* STARS */
     .stars {
       position: absolute;
       inset: 0;
@@ -32,11 +32,10 @@
       position: absolute;
       width: 3px;
       height: 3px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255,255,255,0.9);
       border-radius: 50%;
       animation: twinkle 2.5s infinite ease-in-out alternate;
     }
-    /* random-ish positions */
     .star:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
     .star:nth-child(2) { top: 25%; left: 80%; animation-delay: 0.3s; }
     .star:nth-child(3) { top: 40%; left: 60%; animation-delay: 1s; }
@@ -142,6 +141,26 @@
       animation: slowHeartbeat 2s infinite;
     }
 
+    /* CLICK ME BUTTON (shown after timer ends) */
+    #slideshow-btn {
+      display: none;
+      margin-top: 2rem;
+      padding: 0.6rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ff4d6a;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255,255,255,0.9);
+      box-shadow: 0 0 12px rgba(255,77,106,0.8);
+      animation: titleHeartbeat 1.2s infinite;
+    }
+    #slideshow-btn:hover {
+      box-shadow: 0 0 18px rgba(255,77,106,1);
+    }
+
     /* POLAROIDS */
     .polaroid-container {
       position: absolute;
@@ -215,7 +234,7 @@
       position: absolute;
       bottom: -40px;
       font-size: 1.5rem;
-      color: rgba(255, 51, 102, 0.6);
+      color: rgba(255,51,102,0.6);
       animation: floatUp 8s linear infinite;
     }
     .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; }
@@ -260,7 +279,7 @@
       100% { transform: scale(0.1); opacity: 0; box-shadow: none; }
     }
 
-    /* ANIMATIONS BASE */
+    /* BASE ANIMATIONS */
     @keyframes titleHeartbeat {
       0% { transform: scale(1); }
       20% { transform: scale(1.1); }
@@ -285,7 +304,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <!-- Stars -->
@@ -318,17 +336,14 @@
     <div class="firework f5"></div>
   </div>
 
-  <!-- Polaroids -->
+  <!-- Polaroids (your saved config) -->
   <div class="polaroid-container">
-    <div class="polaroid p1"><img src="D61135FF-B359-4BE1-9FE3-51DDF55369BA_1_102_o.jpeg
-" alt=""><div class="caption">Us 💕</div></div>
+    <div class="polaroid p1"><img src="D61135FF-B359-4BE1-9FE3-51DDF55369BA_1_102_o.jpeg" alt=""><div class="caption">Us 💕</div></div>
     <div class="polaroid p2"><img src="1894CCD6-9C72-4A15-BDA0-A8982EE306DB_1_105_c.jpeg" alt=""><div class="caption">One of my first pics of you</div></div>
     <div class="polaroid p3"><img src="1CC3AABD-C2EA-460E-A02E-AB713870C721_1_105_c.jpeg" alt=""><div class="caption">Cutie Smile 💗</div></div>
-    <div class="polaroid p4"><img src="124F7953-346A-4A18-ABD7-5818B9817FEB_1_105_c.jpeg
-" alt=""><div class="caption">Our first Thanksgiving!</div></div>
+    <div class="polaroid p4"><img src="124F7953-346A-4A18-ABD7-5818B9817FEB_1_105_c.jpeg" alt=""><div class="caption">Our first Thanksgiving!</div></div>
     <div class="polaroid p5"><img src="68D50051-C499-448B-B59B-3D6A988504BA_1_105_c.jpeg" alt=""><div class="caption">My jaan</div></div>
-    <div class="polaroid p6"><img src="9279CB90-9E87-4436-8FCA-FCB87F31BAE9_1_105_c.jpeg
-" alt=""><div class="caption">babyyyyyyyy</div></div>
+    <div class="polaroid p6"><img src="9279CB90-9E87-4436-8FCA-FCB87F31BAE9_1_105_c.jpeg" alt=""><div class="caption">babyyyyyyyy</div></div>
     <div class="polaroid p7"><img src="AFCE4E5D-E9FC-414B-AE94-624E7840610B_1_105_c.jpeg" alt=""><div class="caption">Eid</div></div>
     <div class="polaroid p8"><img src="BEF6468B-A4D8-4E66-B620-9C7DA21B3188_1_105_c.jpeg" alt=""><div class="caption">My beautiful Birthday girl</div></div>
     <div class="polaroid p9"><img src="CA4E89E0-AB71-44A9-930C-5F78E2B294DD_1_105_c.jpeg" alt=""><div class="caption">Valentines 💞</div></div>
@@ -344,6 +359,9 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
     </div>
 
     <div id="heart">❤️</div>
+
+    <!-- CLICK ME button appears when timer ends -->
+    <button id="slideshow-btn">CLICK ME</button>
   </div>
 
   <script>
@@ -363,6 +381,7 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
     const messageEl = document.getElementById("message");
     const heartEl = document.getElementById("heart");
     const fireworksEl = document.getElementById("fireworks");
+    const slideshowBtn = document.getElementById("slideshow-btn");
 
     function updateTimer() {
       const now = new Date().getTime();
@@ -373,6 +392,7 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
         messageEl.classList.add("show");
         heartEl.style.display = "block";
         fireworksEl.style.display = "block";
+        slideshowBtn.style.display = "inline-block";
         clearInterval(loop);
         return;
       }
@@ -389,6 +409,10 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
     document.getElementById("love-link").onclick = e => {
       e.preventDefault();
       alert("I love you. Forever. 💖");
+    };
+
+    slideshowBtn.onclick = () => {
+      window.location.href = "slideshow.html";
     };
 
     updateTimer();
