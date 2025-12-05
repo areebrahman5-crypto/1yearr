@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Year in Photos</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #ffdce8;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Soft stars again */
+    .stars {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      animation: twinkle 2.5s infinite ease-in-out alternate;
+    }
+    .star:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+    .star:nth-child(2) { top: 25%; left: 80%; animation-delay: 0.3s; }
+    .star:nth-child(3) { top: 40%; left: 60%; animation-delay: 1s; }
+    .star:nth-child(4) { top: 70%; left: 20%; animation-delay: 1.5s; }
+    .star:nth-child(5) { top: 15%; left: 50%; animation-delay: 0.8s; }
+    .star:nth-child(6) { top: 60%; left: 75%; animation-delay: 1.2s; }
+    .star:nth-child(7) { top: 5%; left: 30%; animation-delay: 0.5s; }
+    .star:nth-child(8) { top: 85%; left: 40%; animation-delay: 1.8s; }
+    .star:nth-child(9) { top: 50%; left: 10%; animation-delay: 2.1s; }
+    .star:nth-child(10) { top: 35%; left: 90%; animation-delay: 2.4s; }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(0.7); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .slideshow-container {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .slide.active {
+      display: flex;
+      animation: fadeSlide 0.8s ease-in-out;
+    }
+
+    .slide img {
+      max-width: 100%;
+      max-height: 60vh;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      object-fit: cover;
+    }
+
+    .caption {
+      margin-top: 0.75rem;
+      font-size: 1rem;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
+
+    .controls {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.5rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ff4d6a;
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255,77,106,0.9);
+      text-shadow: 0 0 6px rgba(255,255,255,0.9);
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 16px rgba(255,77,106,1);
+    }
+
+    .top-text {
+      position: absolute;
+      top: 18px;
+      z-index: 1;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    }
+
+    .back-link {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: #ff4d6a;
+      font-weight: bold;
+      background: rgba(255,255,255,0.7);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeSlide {
+      0% { opacity: 0; transform: scale(0.97); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars">
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+  </div>
+
+  <a href="index.html" class="back-link">← Back</a>
+  <div class="top-text">Our year in photos 💕</div>
+
+  <div class="slideshow-container" id="slideshow">
+    <div class="slide active">
+      <img src="D61135FF-B359-4BE1-9FE3-51DDF55369BA_1_102_o.jpeg" alt="">
+      <div class="caption">Us 💕</div>
+    </div>
+    <div class="slide">
+      <img src="1894CCD6-9C72-4A15-BDA0-A8982EE306DB_1_105_c.jpeg" alt="">
+      <div class="caption">One of my first pics of you</div>
+    </div>
+    <div class="slide">
+      <img src="1CC3AABD-C2EA-460E-A02E-AB713870C721_1_105_c.jpeg" alt="">
+      <div class="caption">Cutie Smile 💗</div>
+    </div>
+    <div class="slide">
+      <img src="124F7953-346A-4A18-ABD7-5818B9817FEB_1_105_c.jpeg" alt="">
+      <div class="caption">Our first Thanksgiving!</div>
+    </div>
+    <div class="slide">
+      <img src="68D50051-C499-448B-B59B-3D6A988504BA_1_105_c.jpeg" alt="">
+      <div class="caption">My jaan</div>
+    </div>
+    <div class="slide">
+      <img src="9279CB90-9E87-4436-8FCA-FCB87F31BAE9_1_105_c.jpeg" alt="">
+      <div class="caption">babyyyyyyyy</div>
+    </div>
+    <div class="slide">
+      <img src="AFCE4E5D-E9FC-414B-AE94-624E7840610B_1_105_c.jpeg" alt="">
+      <div class="caption">Eid</div>
+    </div>
+    <div class="slide">
+      <img src="BEF6468B-A4D8-4E66-B620-9C7DA21B3188_1_105_c.jpeg" alt="">
+      <div class="caption">My beautiful Birthday girl</div>
+    </div>
+    <div class="slide">
+      <img src="CA4E89E0-AB71-44A9-930C-5F78E2B294DD_1_105_c.jpeg" alt="">
+      <div class="caption">Valentines 💞</div>
+    </div>
+    <div class="slide">
+      <img src="F6A8E1BA-8795-425E-A3B4-255DDA44461C_1_105_c.jpeg" alt="">
+      <div class="caption">recently...</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="prevBtn">◀ Prev</button>
+    <button class="btn" id="nextBtn">Next ▶</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((s, i) => {
+        s.classList.toggle("active", i === index);
+      });
+    }
+
+    prevBtn.addEventListener("click", () => {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    });
+
+    // Optional: autoplay (every 5s)
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 5000);
+  </script>
+</body>
+</html>
