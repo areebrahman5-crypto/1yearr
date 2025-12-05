@@ -9,14 +9,24 @@
       height: 100vh;
       background: #000;
       color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-family: Arial, Helvetica, sans-serif;
       text-align: center;
       padding: 0 1rem;
       box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .center-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 900px;
     }
 
     a#love-link {
@@ -50,11 +60,98 @@
 
     #message {
       display: none;
-      max-width: 900px;
       margin-top: 2rem;
       line-height: 1.6;
       font-size: 1rem;
-      white-space: pre-line; /* keeps your line breaks */
+      white-space: pre-line;
+    }
+
+    /* Polaroid layout */
+    .polaroid-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none; /* so center stuff is easy to tap/click */
+    }
+
+    .polaroid {
+      position: absolute;
+      background: #fff;
+      padding: 8px 8px 18px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.7);
+      width: 140px;
+      color: #000;
+      border-radius: 4px;
+      transform-origin: center center;
+    }
+
+    .polaroid img {
+      display: block;
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .polaroid .caption {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    /* Positions & cute rotations */
+    .top-left {
+      top: 6%;
+      left: 6%;
+      transform: rotate(-8deg);
+    }
+    .top-right {
+      top: 8%;
+      right: 7%;
+      transform: rotate(7deg);
+    }
+    .middle-left {
+      top: 45%;
+      left: 3%;
+      transform: rotate(4deg);
+    }
+    .middle-right {
+      top: 43%;
+      right: 3%;
+      transform: rotate(-5deg);
+    }
+    .bottom-left {
+      bottom: 6%;
+      left: 8%;
+      transform: rotate(-4deg);
+    }
+    .bottom-right {
+      bottom: 8%;
+      right: 8%;
+      transform: rotate(6deg);
+    }
+
+    /* Smaller screens – shrink and hide a couple if needed */
+    @media (max-width: 800px) {
+      .polaroid {
+        width: 105px;
+      }
+      .polaroid img {
+        height: 110px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .middle-left,
+      .middle-right {
+        display: none;
+      }
+      .polaroid {
+        width: 95px;
+      }
+      .polaroid img {
+        height: 100px;
+      }
     }
 
     @keyframes heartbeat {
@@ -74,15 +171,48 @@
   </style>
 </head>
 <body>
-  <!-- Main link -->
-  <a href="#" id="love-link">I LOVE YOU</a>
+  <!-- Polaroid photos around the center -->
+  <div class="polaroid-container">
+    <!-- Change photo1.jpg etc to your real filenames -->
+    <div class="polaroid top-left">
+      <img src="photo1.jpg" alt="Us 1">
+      <div class="caption">You & me 💕</div>
+    </div>
 
-  <!-- Countdown -->
-  <div id="timer"></div>
+    <div class="polaroid top-right">
+      <img src="photo2.jpg" alt="Us 2">
+      <div class="caption">Our favorite day</div>
+    </div>
 
-  <!-- Hidden message that appears when the timer ends -->
-  <div id="message">
+    <div class="polaroid middle-left">
+      <img src="photo3.jpg" alt="Us 3">
+      <div class="caption">My jaan</div>
+    </div>
+
+    <div class="polaroid middle-right">
+      <img src="photo4.jpg" alt="Us 4">
+      <div class="caption">Always us</div>
+    </div>
+
+    <div class="polaroid bottom-left">
+      <img src="photo5.jpg" alt="Us 5">
+      <div class="caption">Forever</div>
+    </div>
+
+    <div class="polaroid bottom-right">
+      <img src="photo6.jpg" alt="Us 6">
+      <div class="caption">1 year & counting</div>
+    </div>
+  </div>
+
+  <!-- Center content -->
+  <div class="center-content">
+    <a href="#" id="love-link">I LOVE YOU</a>
+    <div id="timer"></div>
+
+    <div id="message">
 HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, which only confirms that time goes faster with the one you love. Looking back on this year, we have been through so much. So much happiness, sadness, stress, problems, laughter, cries, and so much more. I genuinely cannot process the thought of a life without you. Thank you for loving me so much through it all. Thank you for being my little putuni baby that always is there for me at the end of the day. I am so so proud of the progress we have made together in the last year, going from two kids with just a somewhat plan for the future to KNOWING what we want out of life. Not just that, but a life together. Thank you so much for helping me be better not just for you, but for myself also. I appreciate every single thing you do for me and I cannot possibly ever make it up to you. Thank you for believing in me even when it was hard to. Thank you for always sticking up for me. Thank you for always prioritizing me. I don't think you realize that you are my heaven on earth jaan. You are the one thing that wakes me up and keeps me going everyday because I know one day I'll wake up next to you. In our house. In our little life. I cannot wait jaan. We are a year closer to making it halal and being together infinitely. From the first day in that english class, to now our last day in accounting, I have kept on loving you more and more each day and I think to myself every day if I can love you more or not, then the next day I find out I dont think I will ever stop loving you more. From our first date at la parilla at The Forum when I could barely be out past 8, to asking you out at Avalon, to meeting your dad for the first time at Shibam, to working with you in the same mall, to now being at your house doing your room, I love you so much. More and more each day. I cannot wait to see what this next year brings to us my love. I hope you enjoy the day I have planned for us today and we make yet another memory we will show our children. I love you, the light of my life. -Areeb
+    </div>
   </div>
 
   <script>
@@ -91,13 +221,10 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
       const now = new Date();
       const target = new Date(now);
 
-      // Set to today's midnight
       target.setHours(0, 0, 0, 0);
-
       const currentDay = now.getDay(); // 0 = Sunday, 6 = Saturday
       let daysUntilSunday = (7 - currentDay) % 7;
 
-      // If it's already past this Sunday 12:00 am, go to next Sunday
       if (daysUntilSunday === 0 && now > target) {
         daysUntilSunday = 7;
       }
@@ -116,7 +243,7 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
 
       if (distance <= 0) {
         timerEl.textContent = "00:00:00:00";
-        messageEl.style.display = 'block'; // show your message
+        messageEl.style.display = 'block';
         clearInterval(intervalId);
         return;
       }
@@ -134,13 +261,12 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
       timerEl.textContent = `${d}:${h}:${m}:${s}`;
     }
 
-    // Click on "I LOVE YOU" still shows a little popup
+    // Click on "I LOVE YOU"
     document.getElementById('love-link').addEventListener('click', function (e) {
       e.preventDefault();
       alert("I love you. Forever. 💖");
     });
 
-    // Start timer
     updateTimer();
     const intervalId = setInterval(updateTimer, 1000);
   </script>
