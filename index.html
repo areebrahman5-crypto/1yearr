@@ -112,20 +112,27 @@
       font-family: "Courier New", monospace;
       color: #b3003c;
       text-shadow: 0 0 4px #fff;
+      margin-bottom: 0.5rem;
     }
 
     /* SECRET MESSAGE */
     #message {
       display: none;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       line-height: 1.8;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: bold;
       white-space: pre-line;
       color: #ffffff;
       text-shadow: 0 0 8px rgba(255,255,255,0.9);
       max-width: 850px;
+      max-height: 60vh;
+      overflow-y: auto;
       opacity: 0;
+      padding: 1.2rem 1.4rem;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.35); /* makes it clearly readable above everything */
+      box-shadow: 0 0 18px rgba(0,0,0,0.4);
     }
     #message.show {
       display: block;
@@ -135,7 +142,7 @@
     #heart {
       display: none;
       font-size: 4rem;
-      margin-top: 1.5rem;
+      margin-top: 1.2rem;
       color: #ff3366;
       text-shadow: 0 0 15px #ff99bb, 0 0 30px #ff6fa3;
       animation: slowHeartbeat 2s infinite;
@@ -144,7 +151,7 @@
     /* CLICK ME BUTTON (shown after timer ends) */
     #slideshow-btn {
       display: none;
-      margin-top: 2rem;
+      margin-top: 1.2rem;
       padding: 0.6rem 1.8rem;
       border-radius: 999px;
       border: none;
@@ -167,6 +174,7 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
+      transition: opacity 0.8s ease;
     }
     .polaroid {
       position: absolute;
@@ -220,6 +228,10 @@
       .p3, .p4, .p7, .p8 { display: none; }
       .polaroid { width: 95px; }
       .polaroid img { height: 100px; }
+      #message {
+        max-height: 65vh;
+        font-size: 0.95rem;
+      }
     }
 
     /* FLOATING HEARTS */
@@ -336,8 +348,8 @@
     <div class="firework f5"></div>
   </div>
 
-  <!-- Polaroids (your saved config) -->
-  <div class="polaroid-container">
+  <!-- Polaroids (saved config) -->
+  <div class="polaroid-container" id="polaroids">
     <div class="polaroid p1"><img src="D61135FF-B359-4BE1-9FE3-51DDF55369BA_1_102_o.jpeg" alt=""><div class="caption">Us 💕</div></div>
     <div class="polaroid p2"><img src="1894CCD6-9C72-4A15-BDA0-A8982EE306DB_1_105_c.jpeg" alt=""><div class="caption">One of my first pics of you</div></div>
     <div class="polaroid p3"><img src="1CC3AABD-C2EA-460E-A02E-AB713870C721_1_105_c.jpeg" alt=""><div class="caption">Cutie Smile 💗</div></div>
@@ -382,6 +394,23 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
     const heartEl = document.getElementById("heart");
     const fireworksEl = document.getElementById("fireworks");
     const slideshowBtn = document.getElementById("slideshow-btn");
+    const loveLink = document.getElementById("love-link");
+    const polaroids = document.getElementById("polaroids");
+
+    function enterFinalState() {
+      // Hide I LOVE YOU and timer
+      if (loveLink) loveLink.style.display = "none";
+      if (timerEl) timerEl.style.display = "none";
+
+      // Fade polaroids a bit so letter stands out but still visible
+      if (polaroids) polaroids.style.opacity = "0.25";
+
+      // Show letter, heart, fireworks, and button
+      if (messageEl) messageEl.classList.add("show");
+      if (heartEl) heartEl.style.display = "block";
+      if (fireworksEl) fireworksEl.style.display = "block";
+      if (slideshowBtn) slideshowBtn.style.display = "inline-block";
+    }
 
     function updateTimer() {
       const now = new Date().getTime();
@@ -389,10 +418,7 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
 
       if (distance <= 0) {
         timerEl.textContent = "00:00:00:00";
-        messageEl.classList.add("show");
-        heartEl.style.display = "block";
-        fireworksEl.style.display = "block";
-        slideshowBtn.style.display = "inline-block";
+        enterFinalState();
         clearInterval(loop);
         return;
       }
@@ -406,14 +432,18 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
         `${String(d).padStart(2,'0')}:${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
     }
 
-    document.getElementById("love-link").onclick = e => {
-      e.preventDefault();
-      alert("I love you. Forever. 💖");
-    };
+    if (loveLink) {
+      loveLink.onclick = e => {
+        e.preventDefault();
+        alert("I love you. Forever. 💖");
+      };
+    }
 
-    slideshowBtn.onclick = () => {
-      window.location.href = "slideshow.html";
-    };
+    if (slideshowBtn) {
+      slideshowBtn.onclick = () => {
+        window.location.href = "slideshow.html";
+      };
+    }
 
     updateTimer();
     const loop = setInterval(updateTimer, 1000);
