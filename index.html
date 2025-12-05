@@ -7,7 +7,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background: #ffdce8; /* baby pink */
+      background: #ffdce8;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       display: flex;
@@ -21,13 +21,7 @@
     }
 
     /* STARS */
-    .stars {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-    }
+    .stars { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
     .star {
       position: absolute;
       width: 3px;
@@ -36,16 +30,16 @@
       border-radius: 50%;
       animation: twinkle 2.5s infinite ease-in-out alternate;
     }
-    .star:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
-    .star:nth-child(2) { top: 25%; left: 80%; animation-delay: 0.3s; }
-    .star:nth-child(3) { top: 40%; left: 60%; animation-delay: 1s; }
-    .star:nth-child(4) { top: 70%; left: 20%; animation-delay: 1.5s; }
-    .star:nth-child(5) { top: 15%; left: 50%; animation-delay: 0.8s; }
-    .star:nth-child(6) { top: 60%; left: 75%; animation-delay: 1.2s; }
-    .star:nth-child(7) { top: 5%; left: 30%; animation-delay: 0.5s; }
-    .star:nth-child(8) { top: 85%; left: 40%; animation-delay: 1.8s; }
-    .star:nth-child(9) { top: 50%; left: 10%; animation-delay: 2.1s; }
-    .star:nth-child(10) { top: 35%; left: 90%; animation-delay: 2.4s; }
+    .star:nth-child(1){top:10%;left:15%;animation-delay:0s}
+    .star:nth-child(2){top:25%;left:80%;animation-delay:.3s}
+    .star:nth-child(3){top:40%;left:60%;animation-delay:1s}
+    .star:nth-child(4){top:70%;left:20%;animation-delay:1.5s}
+    .star:nth-child(5){top:15%;left:50%;animation-delay:.8s}
+    .star:nth-child(6){top:60%;left:75%;animation-delay:1.2s}
+    .star:nth-child(7){top:5%;left:30%;animation-delay:.5s}
+    .star:nth-child(8){top:85%;left:40%;animation-delay:1.8s}
+    .star:nth-child(9){top:50%;left:10%;animation-delay:2.1s}
+    .star:nth-child(10){top:35%;left:90%;animation-delay:2.4s}
 
     @keyframes twinkle {
       0% { opacity: 0.2; transform: scale(0.7); }
@@ -72,32 +66,33 @@
       border-radius: 50%;
       box-shadow: 0 0 12px #ffdf7e, 0 0 22px #ffc94d;
       animation: lightGlow 1.4s infinite alternate;
-      opacity: 0.9;
     }
     @keyframes lightGlow {
       0% { opacity: 0.5; box-shadow: 0 0 8px #ffdf7e; }
       100% { opacity: 1; box-shadow: 0 0 18px #ffdf7e, 0 0 30px #ffc94d; }
     }
 
+    /* CENTER CONTENT */
     .center-content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       display: flex;
       flex-direction: column;
       align-items: center;
       max-width: 900px;
     }
 
-    a#love-link {
+    /* I LOVE YOU */
+    #love-link {
       color: #ff4d4d;
       text-decoration: none;
       font-size: 3rem;
       margin-bottom: 1rem;
-      position: relative;
-      text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+      text-shadow: 0 0 10px rgba(255,0,0,0.8);
       animation: titleHeartbeat 1.2s infinite;
+      position: relative;
     }
-    a#love-link::after {
+    #love-link::after {
       content: "❤";
       position: absolute;
       right: -1.8rem;
@@ -106,39 +101,54 @@
       animation: glow 1.8s infinite;
     }
 
+    @keyframes titleHeartbeat {
+      0%{transform:scale(1)}
+      20%{transform:scale(1.1)}
+      40%{transform:scale(.98)}
+      60%{transform:scale(1.08)}
+      100%{transform:scale(1)}
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 4px #ff4d4d; }
+      50% { text-shadow: 0 0 16px #ff0000; }
+      100% { text-shadow: 0 0 4px #ff4d4d; }
+    }
+
+    /* TIMER */
     #timer {
       font-size: 1.4rem;
       letter-spacing: 2px;
       font-family: "Courier New", monospace;
       color: #b3003c;
       text-shadow: 0 0 4px #fff;
-      margin-bottom: 0.5rem;
     }
 
-    /* SECRET MESSAGE */
+    /* MESSAGE */
     #message {
       display: none;
+      opacity: 0;
       margin-top: 1.5rem;
-      line-height: 1.8;
-      font-size: 1.05rem;
-      font-weight: bold;
+      padding: 1.3rem 1.4rem;
+      line-height: 1.6;
       white-space: pre-line;
-      color: #ffffff;
-      text-shadow: 0 0 8px rgba(255,255,255,0.9);
+      font-weight: bold;
+      background: rgba(0,0,0,0.35);
+      border-radius: 14px;
       max-width: 850px;
       max-height: 60vh;
       overflow-y: auto;
-      opacity: 0;
-      padding: 1.2rem 1.4rem;
-      border-radius: 14px;
-      background: rgba(0, 0, 0, 0.35); /* makes it clearly readable above everything */
-      box-shadow: 0 0 18px rgba(0,0,0,0.4);
-    }
-    #message.show {
-      display: block;
-      animation: fadeInGlow 2.5s ease-out forwards;
+      text-shadow: 0 0 10px rgba(255,255,255,1);
+      animation: fadeInGlow 2.5s forwards ease-out;
     }
 
+    @keyframes fadeInGlow {
+      0% { opacity: 0; text-shadow: none; }
+      50% { opacity: 1; text-shadow: 0 0 25px white; }
+      100% { opacity: 1; text-shadow: 0 0 12px white; }
+    }
+
+    /* HEART */
     #heart {
       display: none;
       font-size: 4rem;
@@ -147,34 +157,36 @@
       text-shadow: 0 0 15px #ff99bb, 0 0 30px #ff6fa3;
       animation: slowHeartbeat 2s infinite;
     }
+    @keyframes slowHeartbeat {
+      0%{transform:scale(1)}
+      50%{transform:scale(1.12)}
+      100%{transform:scale(1)}
+    }
 
-    /* CLICK ME BUTTON (shown after timer ends) */
+    /* CLICK ME BUTTON */
     #slideshow-btn {
       display: none;
-      margin-top: 1.2rem;
+      margin-top: 1.4rem;
       padding: 0.6rem 1.8rem;
-      border-radius: 999px;
-      border: none;
       font-size: 1.1rem;
       font-weight: bold;
+      border-radius: 999px;
+      border: none;
       cursor: pointer;
       background: #ff4d6a;
       color: #fff;
-      text-shadow: 0 0 8px rgba(255,255,255,0.9);
-      box-shadow: 0 0 12px rgba(255,77,106,0.8);
+      text-shadow: 0 0 8px rgba(255,255,255,1);
+      box-shadow: 0 0 12px rgba(255,77,106,0.9);
       animation: titleHeartbeat 1.2s infinite;
     }
-    #slideshow-btn:hover {
-      box-shadow: 0 0 18px rgba(255,77,106,1);
-    }
 
-    /* POLAROIDS */
+    /* POLAROIDS (your saved config) */
     .polaroid-container {
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.8s;
     }
     .polaroid {
       position: absolute;
@@ -183,9 +195,8 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.4);
       width: 140px;
       border-radius: 4px;
-      transform-origin: center center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      animation: sparkleGlow 2.5s ease-in-out infinite alternate;
+      transition: transform .25s, box-shadow .25s;
+      animation: sparkleGlow 2.5s infinite alternate ease-in-out;
     }
     .polaroid img {
       width: 100%;
@@ -194,189 +205,169 @@
       border-radius: 3px;
     }
     .caption {
-      text-align: center;
-      margin-top: 6px;
-      font-size: 0.75rem;
-      color: #000;
+      text-align:center;
+      margin-top:6px;
+      color:#000;
+      font-size:.75rem;
     }
     .polaroid:hover {
       transform: scale(1.07);
       box-shadow: 0 10px 20px rgba(0,0,0,0.6);
     }
     @keyframes sparkleGlow {
-      0% { box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-      100% { box-shadow: 0 6px 18px rgba(255,255,255,0.5); }
+      0%{box-shadow:0 4px 10px rgba(0,0,0,.4)}
+      100%{box-shadow:0 6px 18px rgba(255,255,255,.5)}
     }
 
-    /* POSITIONS FOR 10 PICS */
-    .p1  { top: 8%;  left: 5%;  transform: rotate(-8deg); }
-    .p2  { top: 10%; left: 22%; transform: rotate(6deg); }
-    .p3  { top: 12%; right: 22%; transform: rotate(-4deg); }
-    .p4  { top: 8%;  right: 5%; transform: rotate(5deg); }
-    .p5  { top: 40%; left: 4%;  transform: rotate(3deg); }
-    .p6  { top: 43%; right: 4%; transform: rotate(-5deg); }
-    .p7  { bottom: 20%; left: 10%; transform: rotate(-3deg); }
-    .p8  { bottom: 22%; right: 10%; transform: rotate(4deg); }
-    .p9  { bottom: 6%; left: 25%; transform: rotate(-6deg); }
-    .p10 { bottom: 7%; right: 25%; transform: rotate(7deg); }
-
-    @media (max-width: 800px) {
-      .polaroid { width: 105px; }
-      .polaroid img { height: 110px; }
-    }
-    @media (max-width: 600px) {
-      .p3, .p4, .p7, .p8 { display: none; }
-      .polaroid { width: 95px; }
-      .polaroid img { height: 100px; }
-      #message {
-        max-height: 65vh;
-        font-size: 0.95rem;
-      }
-    }
+    .p1{top:8%;left:5%;transform:rotate(-8deg)}
+    .p2{top:10%;left:22%;transform:rotate(6deg)}
+    .p3{top:12%;right:22%;transform:rotate(-4deg)}
+    .p4{top:8%;right:5%;transform:rotate(5deg)}
+    .p5{top:40%;left:4%;transform:rotate(3deg)}
+    .p6{top:43%;right:4%;transform:rotate(-5deg)}
+    .p7{bottom:20%;left:10%;transform:rotate(-3deg)}
+    .p8{bottom:22%;right:10%;transform:rotate(4deg)}
+    .p9{bottom:6%;left:25%;transform:rotate(-6deg)}
+    .p10{bottom:7%;right:25%;transform:rotate(7deg)}
 
     /* FLOATING HEARTS */
-    .floating-hearts {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
+    .floating-hearts {position:absolute;inset:0;pointer-events:none;z-index:1}
     .floating-heart {
-      position: absolute;
-      bottom: -40px;
-      font-size: 1.5rem;
-      color: rgba(255,51,102,0.6);
-      animation: floatUp 8s linear infinite;
+      position:absolute;
+      bottom:-40px;
+      font-size:1.5rem;
+      color:rgba(255,51,102,.6);
+      animation:floatUp 8s linear infinite;
     }
-    .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .floating-heart:nth-child(2) { left: 30%; animation-delay: 2s; }
-    .floating-heart:nth-child(3) { left: 50%; animation-delay: 4s; }
-    .floating-heart:nth-child(4) { left: 70%; animation-delay: 1s; }
-    .floating-heart:nth-child(5) { left: 85%; animation-delay: 3s; }
+    .floating-heart:nth-child(1){left:10%;animation-delay:0s}
+    .floating-heart:nth-child(2){left:30%;animation-delay:2s}
+    .floating-heart:nth-child(3){left:50%;animation-delay:4s}
+    .floating-heart:nth-child(4){left:70%;animation-delay:1s}
+    .floating-heart:nth-child(5){left:85%;animation-delay:3s}
 
     @keyframes floatUp {
-      0%   { transform: translateY(0) scale(0.9); opacity: 0; }
-      20%  { opacity: 0.6; }
-      80%  { opacity: 0.6; }
-      100% { transform: translateY(-120vh) scale(1.3); opacity: 0; }
+      0%{transform:translateY(0) scale(.9);opacity:0}
+      20%{opacity:.6}
+      80%{opacity:.6}
+      100%{transform:translateY(-120vh) scale(1.3);opacity:0}
     }
 
     /* FIREWORKS */
-    .fireworks {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 4;
-      display: none;
-    }
+    .fireworks {position:absolute;inset:0;pointer-events:none;z-index:5;display:none;}
     .firework {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #fff, transparent);
-      animation: explode 1.8s ease-out infinite;
-      opacity: 0;
+      position:absolute;width:8px;height:8px;border-radius:50%;
+      background:radial-gradient(circle,#fff,transparent);
+      animation:explode 1.8s infinite ease-out;
+      opacity:0;
     }
-    .f1 { top: 30%; left: 20%; }
-    .f2 { top: 25%; right: 25%; animation-delay: 0.4s; }
-    .f3 { top: 50%; left: 50%; animation-delay: 0.8s; }
-    .f4 { bottom: 25%; left: 30%; animation-delay: 1.1s; }
-    .f5 { bottom: 20%; right: 20%; animation-delay: 1.4s; }
+    .f1{top:30%;left:20%}
+    .f2{top:25%;right:25%;animation-delay:.4s}
+    .f3{top:50%;left:50%;animation-delay:.8s}
+    .f4{bottom:25%;left:30%;animation-delay:1.1s}
+    .f5{bottom:20%;right:20%;animation-delay:1.4s}
 
     @keyframes explode {
-      0%   { transform: scale(0); opacity: 0; }
-      30%  { transform: scale(1.8); opacity: 1; box-shadow: 0 0 20px #fff, 0 0 40px #ff8ad6; }
-      100% { transform: scale(0.1); opacity: 0; box-shadow: none; }
+      0%{transform:scale(0);opacity:0}
+      30%{transform:scale(1.8);opacity:1;box-shadow:0 0 20px #fff,0 0 40px #ff8ad6}
+      100%{transform:scale(.1);opacity:0}
     }
 
-    /* BASE ANIMATIONS */
-    @keyframes titleHeartbeat {
-      0% { transform: scale(1); }
-      20% { transform: scale(1.1); }
-      40% { transform: scale(0.98); }
-      60% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
-    @keyframes slowHeartbeat {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-      100% { transform: scale(1); }
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 4px #ff4d4d; }
-      50% { text-shadow: 0 0 16px #ff0000; }
-      100% { text-shadow: 0 0 4px #ff4d4d; }
-    }
-    @keyframes fadeInGlow {
-      0%   { opacity: 0; text-shadow: none; }
-      50%  { opacity: 1; text-shadow: 0 0 20px white; }
-      100% { opacity: 1; text-shadow: 0 0 12px white; }
-    }
   </style>
 </head>
+
 <body>
 
-  <!-- Stars -->
-  <div class="stars">
-    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
-    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
-  </div>
+<!-- STARS -->
+<div class="stars">
+  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+</div>
 
-  <!-- Floating hearts -->
-  <div class="floating-hearts">
-    <div class="floating-heart">❤</div>
-    <div class="floating-heart">💕</div>
-    <div class="floating-heart">💖</div>
-    <div class="floating-heart">💗</div>
-    <div class="floating-heart">💞</div>
-  </div>
+<!-- FLOATING HEARTS -->
+<div class="floating-hearts">
+  <div class="floating-heart">❤</div>
+  <div class="floating-heart">💕</div>
+  <div class="floating-heart">💖</div>
+  <div class="floating-heart">💗</div>
+  <div class="floating-heart">💞</div>
+</div>
 
-  <!-- String lights -->
-  <div class="string-lights">
-    <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
-    <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
-  </div>
+<!-- STRING LIGHTS -->
+<div class="string-lights">
+  <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+  <div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div>
+</div>
 
-  <!-- Fireworks -->
-  <div class="fireworks" id="fireworks">
-    <div class="firework f1"></div>
-    <div class="firework f2"></div>
-    <div class="firework f3"></div>
-    <div class="firework f4"></div>
-    <div class="firework f5"></div>
-  </div>
+<!-- FIREWORKS -->
+<div class="fireworks" id="fireworks">
+  <div class="firework f1"></div>
+  <div class="firework f2"></div>
+  <div class="firework f3"></div>
+  <div class="firework f4"></div>
+  <div class="firework f5"></div>
+</div>
 
-  <!-- Polaroids (saved config) -->
-  <div class="polaroid-container" id="polaroids">
-    <div class="polaroid p1"><img src="D61135FF-B359-4BE1-9FE3-51DDF55369BA_1_102_o.jpeg" alt=""><div class="caption">Us 💕</div></div>
-    <div class="polaroid p2"><img src="1894CCD6-9C72-4A15-BDA0-A8982EE306DB_1_105_c.jpeg" alt=""><div class="caption">One of my first pics of you</div></div>
-    <div class="polaroid p3"><img src="1CC3AABD-C2EA-460E-A02E-AB713870C721_1_105_c.jpeg" alt=""><div class="caption">Cutie Smile 💗</div></div>
-    <div class="polaroid p4"><img src="124F7953-346A-4A18-ABD7-5818B9817FEB_1_105_c.jpeg" alt=""><div class="caption">Our first Thanksgiving!</div></div>
-    <div class="polaroid p5"><img src="68D50051-C499-448B-B59B-3D6A988504BA_1_105_c.jpeg" alt=""><div class="caption">My jaan</div></div>
-    <div class="polaroid p6"><img src="9279CB90-9E87-4436-8FCA-FCB87F31BAE9_1_105_c.jpeg" alt=""><div class="caption">babyyyyyyyy</div></div>
-    <div class="polaroid p7"><img src="AFCE4E5D-E9FC-414B-AE94-624E7840610B_1_105_c.jpeg" alt=""><div class="caption">Eid</div></div>
-    <div class="polaroid p8"><img src="BEF6468B-A4D8-4E66-B620-9C7DA21B3188_1_105_c.jpeg" alt=""><div class="caption">My beautiful Birthday girl</div></div>
-    <div class="polaroid p9"><img src="CA4E89E0-AB71-44A9-930C-5F78E2B294DD_1_105_c.jpeg" alt=""><div class="caption">Valentines 💞</div></div>
-    <div class="polaroid p10"><img src="F6A8E1BA-8795-425E-A3B4-255DDA44461C_1_105_c.jpeg" alt=""><div class="caption">recently...</div></div>
-  </div>
+<!-- POLAROIDS (SAVED CONFIG) -->
+<div class="polaroid-container" id="polaroids">
+  <div class="polaroid p1"><img src="D61135FF-B359-4BE1-9FE3-51DDF55369BA_1_102_o.jpeg"><div class="caption">Us 💕</div></div>
+  <div class="polaroid p2"><img src="1894CCD6-9C72-4A15-BDA0-A8982EE306DB_1_105_c.jpeg"><div class="caption">One of my first pics of you</div></div>
+  <div class="polaroid p3"><img src="1CC3AABD-C2EA-460E-A02E-AB713870C721_1_105_c.jpeg"><div class="caption">Cutie Smile 💗</div></div>
+  <div class="polaroid p4"><img src="124F7953-346A-4A18-ABD7-5818B9817FEB_1_105_c.jpeg"><div class="caption">Our first Thanksgiving!</div></div>
+  <div class="polaroid p5"><img src="68D50051-C499-448B-B59B-3D6A988504BA_1_105_c.jpeg"><div class="caption">My jaan</div></div>
+  <div class="polaroid p6"><img src="9279CB90-9E87-4436-8FCA-FCB87F31BAE9_1_105_c.jpeg"><div class="caption">babyyyyyyyy</div></div>
+  <div class="polaroid p7"><img src="AFCE4E5D-E9FC-414B-AE94-624E7840610B_1_105_c.jpeg"><div class="caption">Eid</div></div>
+  <div class="polaroid p8"><img src="BEF6468B-A4D8-4E66-B620-9C7DA21B3188_1_105_c.jpeg"><div class="caption">My beautiful Birthday girl</div></div>
+  <div class="polaroid p9"><img src="CA4E89E0-AB71-44A9-930C-5F78E2B294DD_1_105_c.jpeg"><div class="caption">Valentines 💞</div></div>
+  <div class="polaroid p10"><img src="F6A8E1BA-8795-425E-A3B4-255DDA44461C_1_105_c.jpeg"><div class="caption">recently...</div></div>
+</div>
 
-  <div class="center-content">
-    <a href="#" id="love-link">I LOVE YOU</a>
-    <div id="timer"></div>
+<!-- MAIN CONTENT -->
+<div class="center-content">
+  <a id="love-link" href="#">I LOVE YOU</a>
+  <div id="timer"></div>
 
-    <div id="message">
+  <div id="message">
 HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, which only confirms that time goes faster with the one you love. Looking back on this year, we have been through so much. So much happiness, sadness, stress, problems, laughter, cries, and so much more. I genuinely cannot process the thought of a life without you. Thank you for loving me so much through it all. Thank you for being my little putuni baby that always is there for me at the end of the day. I am so so proud of the progress we have made together in the last year, going from two kids with just a somewhat plan for the future to KNOWING what we want out of life. Not just that, but a life together. Thank you so much for helping me be better not just for you, but for myself also. I appreciate every single thing you do for me and I cannot possibly ever make it up to you. Thank you for believing in me even when it was hard to. Thank you for always sticking up for me. Thank you for always prioritizing me. I don't think you realize that you are my heaven on earth jaan. You are the one thing that wakes me up and keeps me going everyday because I know one day I'll wake up next to you. In our house. In our little life. I cannot wait jaan. We are a year closer to making it halal and being together infinitely. From the first day in that english class, to now our last day in accounting, I have kept on loving you more and more each day and I think to myself every day if I can love you more or not, then the next day I find out I dont think I will ever stop loving you more. From our first date at la parilla at The Forum when I could barely be out past 8, to asking you out at Avalon, to meeting your dad for the first time at Shibam, to working with you in the same mall, to now being at your house doing your room, I love you so much. More and more each day. I cannot wait to see what this next year brings to us my love. I hope you enjoy the day I have planned for us today and we make yet another memory we will show our children. I love you, the light of my life. -Areeb
-    </div>
-
-    <div id="heart">❤️</div>
-
-    <!-- CLICK ME button appears when timer ends -->
-    <button id="slideshow-btn">CLICK ME</button>
   </div>
 
-  <script>
+  <div id="heart">❤️</div>
+  <button id="slideshow-btn">CLICK ME</button>
+</div>
+
+<!-- SCRIPT WITH DEBUG MODE -->
+<script>
+
+  /* -----------------------------
+        DEBUG MODE CONTROL
+     -----------------------------
+     Set to:
+     true  → instantly shows final screen (for testing)
+     false → normal countdown
+  --------------------------------*/
+  const DEBUG = false;
+
+
+  function enterFinalState() {
+    document.getElementById("love-link").style.display = "none";
+    document.getElementById("timer").style.display = "none";
+
+    document.getElementById("polaroids").style.opacity = "0.25";
+
+    document.getElementById("message").style.display = "block";
+    document.getElementById("message").classList.add("show");
+
+    document.getElementById("heart").style.display = "block";
+    document.getElementById("fireworks").style.display = "block";
+    document.getElementById("slideshow-btn").style.display = "inline-block";
+  }
+
+
+  if (DEBUG === true) {
+    // Skip timer completely
+    enterFinalState();
+  } else {
+
+    // Normal countdown mode
     function getNextSundayMidnight() {
       const now = new Date();
       const target = new Date(now);
@@ -389,65 +380,42 @@ HAPPY 1 YEAR MY JAAN!!!!! I cannot believe it has been a whole year already, whi
     }
 
     const targetDate = getNextSundayMidnight();
-    const timerEl = document.getElementById("timer");
-    const messageEl = document.getElementById("message");
-    const heartEl = document.getElementById("heart");
-    const fireworksEl = document.getElementById("fireworks");
-    const slideshowBtn = document.getElementById("slideshow-btn");
-    const loveLink = document.getElementById("love-link");
-    const polaroids = document.getElementById("polaroids");
-
-    function enterFinalState() {
-      // Hide I LOVE YOU and timer
-      if (loveLink) loveLink.style.display = "none";
-      if (timerEl) timerEl.style.display = "none";
-
-      // Fade polaroids a bit so letter stands out but still visible
-      if (polaroids) polaroids.style.opacity = "0.25";
-
-      // Show letter, heart, fireworks, and button
-      if (messageEl) messageEl.classList.add("show");
-      if (heartEl) heartEl.style.display = "block";
-      if (fireworksEl) fireworksEl.style.display = "block";
-      if (slideshowBtn) slideshowBtn.style.display = "inline-block";
-    }
 
     function updateTimer() {
-      const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
+      const now = Date.now();
+      const diff = targetDate - now;
 
-      if (distance <= 0) {
-        timerEl.textContent = "00:00:00:00";
+      if (diff <= 0) {
+        document.getElementById("timer").textContent = "00:00:00:00";
         enterFinalState();
         clearInterval(loop);
         return;
       }
 
-      const d = Math.floor(distance / 86400000);
-      const h = Math.floor((distance % 86400000) / 3600000);
-      const m = Math.floor((distance % 3600000) / 60000);
-      const s = Math.floor((distance % 60000) / 1000);
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
 
-      timerEl.textContent =
-        `${String(d).padStart(2,'0')}:${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    }
-
-    if (loveLink) {
-      loveLink.onclick = e => {
-        e.preventDefault();
-        alert("I love you. Forever. 💖");
-      };
-    }
-
-    if (slideshowBtn) {
-      slideshowBtn.onclick = () => {
-        window.location.href = "slideshow.html";
-      };
+      document.getElementById("timer").textContent =
+        `${String(d).padStart(2,"0")}:${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
     }
 
     updateTimer();
     const loop = setInterval(updateTimer, 1000);
-  </script>
+  }
+
+  // CLICK HANDLERS
+  document.getElementById("love-link").onclick = e => {
+    e.preventDefault();
+    alert("I love you. Forever. 💖");
+  };
+
+  document.getElementById("slideshow-btn").onclick = () => {
+    window.location.href = "slideshow.html";
+  };
+
+</script>
 
 </body>
 </html>
